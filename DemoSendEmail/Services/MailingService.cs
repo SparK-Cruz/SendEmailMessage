@@ -28,6 +28,7 @@ namespace DemoSendEmail.Services {
                 Sender = MailboxAddress.Parse(_mailSettings.Email),
                 Subject = subject ?? string.Empty,
             };
+            email.Sender.Name = _mailSettings.DisplayName;
             email.To.Add(MailboxAddress.Parse(mailto));
             var builder = new BodyBuilder();
             if (attachments != null)
