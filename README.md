@@ -70,6 +70,7 @@ public async Task SendEmailAsync(MailRequest mailRequest)
 {
     var email = new MimeMessage();
     email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+    email.Sender.Name = _mailSettings.DisplayName;
     email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
     email.Subject = mailRequest.Subject;
     var builder = new BodyBuilder();
